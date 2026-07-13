@@ -1,0 +1,23 @@
+# ── Backend (Python/FastAPI) ─────────────────────────────
+backend/.env
+backend/*.env
+!backend/.env.example
+backend/__pycache__/
+backend/**/__pycache__/
+*.pyc
+backend/pharmacy.db
+backend/venv/
+backend/.venv/
+
+# ── Frontend (React/Vite) ────────────────────────────────
+smartpharm-frontend/node_modules/
+smartpharm-frontend/dist/
+smartpharm-frontend/.env
+smartpharm-frontend/.env.local
+smartpharm-frontend/src/routeTree.gen.ts.bak
+
+# ── OS / editor cruft ─────────────────────────────────────
+.DS_Store
+.vscode/
+.idea/
+*.log

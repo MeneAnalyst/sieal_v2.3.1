@@ -1,0 +1,36 @@
+fastapi==0.100.1
+uvicorn==0.23.2
+sqlalchemy==2.0.36
+pydantic==1.10.21
+python-dateutil==2.9.0
+python-multipart==0.0.6
+openpyxl==3.1.2
+python-docx==1.1.0
+reportlab==4.2.5
+
+# ── KPI Engine (Tier 1 — essential) ────────────────────────────────
+# pandas is also load-bearing for ehr_parsing.py's real MOHCC/OpenMRS
+# XLSX report parsing (Art Appointments List, HTS Register imports) —
+# not just the KPI engine. Pinned like everything else here for
+# reproducible builds, since Render silently picking a newer pandas on
+# a fresh build is exactly the kind of thing that broke this project's
+# pydantic/Python-version compatibility before (see .python-version).
+numpy
+pandas==2.2.3
+scipy
+
+# ── KPI Engine (Tier 2 — wired for a specific, real feature each) ──
+pulp          # LP feasibility check for Network Transfer Impact Score
+lifelines     # Kaplan-Meier retention curve — designed for small/censored samples
+
+# ── Defaulter risk (the one Tier 3 library, scoped deliberately) ───
+# Logistic regression only — NOT xgboost/SHAP/PyMC/OR-Tools. See
+# defaulter_risk.py's module docstring for why: at ~45 seed patients,
+# a fitted tree ensemble or SHAP explainer would produce confident-
+# looking noise, not decision support. Pin numpy<2 above FIRST if you
+# add anything else here — several ML libraries assume pydantic v2 /
+# numpy 2.x in recent releases and this project is pinned to pydantic 1.x.
+scikit-learn
+
+# ── Population Analytics warehouse (separate Postgres instance) ────
+psycopg2-binary
