@@ -7,7 +7,7 @@ import type {
   InterventionEffectivenessResult, WarehouseStatus,
 } from "@/types";
 
-export const API_URL = import.meta.env.VITE_API_URL ?? "http://localhost:8000/api";
+export const API_URL = import.meta.env.VITE_API_URL ?? "https://siel-react.onrender.com";
 
 const TOKEN_KEY = "sp_tok";
 const USER_KEY = "sp_user";
